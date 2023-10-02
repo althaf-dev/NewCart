@@ -2,6 +2,7 @@ const express = require("express");
 var path = require('path');
 var hbs = require('express-handlebars');
 var session = require("express-session");
+var db = require("./config/connection");
 
 // Create an Express app and listen for incoming requests on port 3000
 const app = express();
@@ -18,6 +19,12 @@ app.engine('hbs',hbs.engine({extname:'.hbs',defaultLayout:'layout',layoutsDir:__
 app.use(express.json());
 app.use(express.urlencoded());
 
+db.connect((err)=>{
+  
+  if(err)  console.log(err);
+  else console.log("connected successfully");
+  
+});
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
