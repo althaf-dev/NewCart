@@ -4,6 +4,7 @@ var hbs = require('express-handlebars');
 var session = require("express-session");
 var db = require("./config/connection");
 var fileUpload = require("express-fileupload");
+var session = require("express-session");
 
 // Create an Express app and listen for incoming requests on port 3000
 const app = express();
@@ -20,6 +21,7 @@ app.engine('hbs',hbs.engine({extname:'.hbs',defaultLayout:'layout',layoutsDir:__
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret:"key",cookie:{maxAge:60000}}))
 app.use(fileUpload());
 
 db.connect((err)=>{
