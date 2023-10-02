@@ -19,6 +19,7 @@ app.engine('hbs',hbs.engine({extname:'.hbs',defaultLayout:'layout',layoutsDir:__
 // Use middleware to parse incoming requests with JSON and URL-encoded payloads
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 
 db.connect((err)=>{
