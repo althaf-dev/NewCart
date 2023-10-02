@@ -3,6 +3,7 @@ var path = require('path');
 var hbs = require('express-handlebars');
 var session = require("express-session");
 var db = require("./config/connection");
+var fileUpload = require("express-fileupload");
 
 // Create an Express app and listen for incoming requests on port 3000
 const app = express();
@@ -18,6 +19,7 @@ app.engine('hbs',hbs.engine({extname:'.hbs',defaultLayout:'layout',layoutsDir:__
 // Use middleware to parse incoming requests with JSON and URL-encoded payloads
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(fileUpload());
 
 db.connect((err)=>{
   
