@@ -5,6 +5,10 @@ const app = express();
 const router = express.Router();
 const port = process.env.PORT || 3000;
 
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+app.engine('hbs',hbs.engine({extname:'.hbs',defaultLayout:'layout',layoutsDir:__dirname+'/views/layout/',partilasDir:__dirname+'/view/partials/'}));
 // Use middleware to parse incoming requests with JSON and URL-encoded payloads
 app.use(express.json());
 app.use(express.urlencoded());
@@ -19,7 +23,7 @@ app.use((err, req, res, next) => {
 router.get("/", (req, res) => {
   console.log("hello");
   console.log(__dirname);
-  res.render('layout/layout.hbs');
+  res.render('user/view-product');
 });
 
 // Handle POST requests to specific URLs i.e. webhook endpoints
