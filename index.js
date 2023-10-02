@@ -17,9 +17,9 @@ const router = express.Router();
 const port = process.env.PORT || 3000;
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-app.engine('hbs',hbs.engine({extname:'.hbs',defaultLayout:'layout',layoutsDir:__dirname+'/views/layout/',partilasDir:__dirname+'/view/partials/'}));
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'hbs');
+// app.engine('hbs',hbs.engine({extname:'.hbs',defaultLayout:'layout',layoutsDir:__dirname+'/views/layout/',partilasDir:__dirname+'/view/partials/'}));
 
 // Use middleware to parse incoming requests with JSON and URL-encoded payloads
 app.use(logger('dev'));
