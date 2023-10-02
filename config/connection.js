@@ -9,7 +9,7 @@ var state = {
 module.exports.connect = function (done) {
 
   
-    const url = "mongodb://127.0.0.1:27017";
+    const url = "mongodb://mongo:YRJsmoowTveKh54p1BDp@containers-us-west-61.railway.app:6508";
     const dbname = 'shopping';
 
     var client = new mongoClient(url);
