@@ -18,6 +18,7 @@ app.use((err, req, res, next) => {
 // Handle GET requests to the root URL
 router.get("/", (req, res) => {
   console.log("hello");
+  console.log(__dirname);
   res.render('layout/layout.hbs');
 });
 
