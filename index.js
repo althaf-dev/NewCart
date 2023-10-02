@@ -13,7 +13,7 @@ var adminRouter = require('./routes/admin');
 
 // Create an Express app and listen for incoming requests on port 3000
 const app = express();
-const router = express.Router();
+// const router = express.Router();
 const port = process.env.PORT || 3000;
 
 // view engine setup
@@ -28,8 +28,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', userRouter);
-app.use('/admin', adminRouter);
+// app.use('/', userRouter);
+// app.use('/admin', adminRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -37,7 +37,7 @@ app.use((err, req, res, next) => {
   res.status(500).send("Internal Server Error");
 });
 
-// Handle GET requests to the root URL
+Handle GET requests to the root URL
 // router.get("/", (req, res) => {
 //   res.send("Welcome to the Webhook Server!");
 // });
