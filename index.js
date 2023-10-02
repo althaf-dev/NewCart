@@ -4,7 +4,9 @@ var hbs = require('express-handlebars');
 
 // Create an Express app and listen for incoming requests on port 3000
 const app = express();
-const router = express.Router();
+// const router = express.Router();
+var userRouter = require('./routes/user');
+var adminRouter = require('./routes/admin');
 const port = process.env.PORT || 3000;
 
 
@@ -22,25 +24,28 @@ app.use((err, req, res, next) => {
 });
 
 // Handle GET requests to the root URL
-router.get("/", (req, res) => {
-  console.log("hello");
-  console.log(__dirname);
-  res.render('user/view-product');
-});
+// router.get("/", (req, res) => {
+//   console.log("hello");
+//   console.log(__dirname);
+//   res.render('user/view-product');
+// });
 
 // Handle POST requests to specific URLs i.e. webhook endpoints
-router.post("/webhook-1", (req, res) => {
-  console.log(req.body);
-  res.send("Webhook 1 successfully received.");
-});
+// router.post("/webhook-1", (req, res) => {
+//   console.log(req.body);
+//   res.send("Webhook 1 successfully received.");
+// });
 
-router.post("/webhook-2", (req, res) => {
-  console.log(req.body);
-  res.send("Webhook 2 successfully received.");
-});
+// router.post("/webhook-2", (req, res) => {
+//   console.log(req.body);
+//   res.send("Webhook 2 successfully received.");
+// });
 
 // Mount the router middleware
-app.use(router);
+// app.use(router);
+app.use('/', userRouter);
+app.use('/admin', adminRouter);
+
 
 // Start the server and listen for incoming connections
 app.listen(port, () => {
