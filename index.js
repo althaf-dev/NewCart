@@ -1,90 +1,40 @@
-#!/usr/bin/env node
+const express = require("express");
 
-/**
- * Module dependencies.
- */
+// Create an Express app and listen for incoming requests on port 3000
+const app = express();
+const router = express.Router();
+const port = process.env.PORT || 3000;
 
-var app = require('./app');
-var debug = require('debug')('e-cart:server');
-var http = require('http');
+// Use middleware to parse incoming requests with JSON and URL-encoded payloads
+app.use(express.json());
+app.use(express.urlencoded());
 
-/**
- * Get port from environment and store in Express.
- */
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Internal Server Error");
+});
 
-var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+// Handle GET requests to the root URL
+router.get("/", (req, res) => {
+  res.send("Welcome to the Webhook Server!");
+});
 
-/**
- * Create HTTP server.
- */
+// Handle POST requests to specific URLs i.e. webhook endpoints
+router.post("/webhook-1", (req, res) => {
+  console.log(req.body);
+  res.send("Webhook 1 successfully received.");
+});
 
-var server = http.createServer(app);
+router.post("/webhook-2", (req, res) => {
+  console.log(req.body);
+  res.send("Webhook 2 successfully received.");
+});
 
-/**
- * Listen on provided port, on all network interfaces.
- */
+// Mount the router middleware
+app.use(router);
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
-
-/**
- * Normalize a port into a number, string, or false.
- */
-
-function normalizePort(val) {
-  var port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
-
-/**
- * Event listener for HTTP server "error" event.
- */
-
-function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
-
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
-
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-}
-
-/**
- * Event listener for HTTP server "listening" event.
- */
-
-function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
-}
+// Start the server and listen for incoming connections
+app.listen(port, () => {
+  console.log(`Server running at https://localhost:${port}/`);
+});
