@@ -37,7 +37,7 @@ app.use((err, req, res, next) => {
   res.status(500).send("Internal Server Error");
 });
 
-Handle GET requests to the root URL
+// Handle GET requests to the root URL
 // router.get("/", (req, res) => {
 //   res.send("Welcome to the Webhook Server!");
 // });
