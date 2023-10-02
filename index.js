@@ -17,6 +17,7 @@ app.use((err, req, res, next) => {
 
 // Handle GET requests to the root URL
 router.get("/", (req, res) => {
+  console.log("hello");
   res.send("Welcome to the Webhook Server!");
 });
 
