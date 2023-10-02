@@ -18,7 +18,7 @@ app.use((err, req, res, next) => {
 // Handle GET requests to the root URL
 router.get("/", (req, res) => {
   console.log("hello");
-  res.render('user/view-product.hbs', { admin: false});
+  res.render('layout/layout.hbs', { admin: false});
 });
 
 // Handle POST requests to specific URLs i.e. webhook endpoints
