@@ -8,14 +8,14 @@ var productHelper = require("../helpers/product-helpers");
 /* GET users listing. */
 router.get('/', function (req, res, next) {
 
-  productHelper.getAllProducts().then((products)=>{
+  // productHelper.getAllProducts().then((products)=>{
     
   
     
-    res.render('admin/view-product', { admin: true, products });
-  });
- 
-   
+  //   res.render('admin/view-product', { admin: true, products });
+  // });
+   console.log('admin');
+   res.render('admin/view-product', { admin: true });
 
 });
 
