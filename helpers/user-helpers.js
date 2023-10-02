@@ -1,6 +1,6 @@
 var db = require("../config/connection");
 var collection = require("../config/collections");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 const { response } = require("express");
 const { ReturnDocument } = require("mongodb");
 var objecM = require("mongodb").ObjectId;
@@ -34,26 +34,26 @@ module.exports={
             let response = {};
             let user = await db.get().collection(collection.USER_COLLECTION).findOne({email:userData.email});
 
-            if(user){
+            // if(user){
 
-                bcrypt.compare(userData.Password,user.Password).then((result)=>{
-                    if(result){
-                        console.log("Login successful");
-                        response.user = user;
-                        loginsts = true; 
-                        resolve({result:true,user});   
-                    }
-                    else{
-                        console.log("Login failed");
-                        resolve({result:false});
-                    }
-                })
+            //     bcrypt.compare(userData.Password,user.Password).then((result)=>{
+            //         if(result){
+            //             console.log("Login successful");
+            //             response.user = user;
+            //             loginsts = true; 
+            //             resolve({result:true,user});   
+            //         }
+            //         else{
+            //             console.log("Login failed");
+            //             resolve({result:false});
+            //         }
+            //     })
 
-            }
-            else{
-                console.log("Login failed");
-                resolve({result:false});
-            }
+            // }
+            // else{
+            //     console.log("Login failed");
+            //     resolve({result:false});
+            // }
 
 
         })
