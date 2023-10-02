@@ -7,15 +7,12 @@ var productHelper = require("../helpers/product-helpers");
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
+     console.log('admin');
+  productHelper.getAllProducts().then((products)=>{
+    res.render('admin/view-product', { admin: true, products });
+  });
 
-  // productHelper.getAllProducts().then((products)=>{
-    
   
-    
-  //   res.render('admin/view-product', { admin: true, products });
-  // });
-   console.log('admin');
-   res.render('admin/view-product', { admin: true });
 
 });
 
