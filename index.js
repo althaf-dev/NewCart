@@ -13,7 +13,7 @@ var adminRouter = require('./routes/admin');
 
 // Create an Express app and listen for incoming requests on port 3000
 const app = express();
-// const router = express.Router();
+const router = express.Router();
 const port = process.env.PORT || 3000;
 
 // view engine setup
