@@ -1,5 +1,6 @@
 const express = require("express");
 var path = require('path');
+var hbs = require('express-handlebars');
 
 // Create an Express app and listen for incoming requests on port 3000
 const app = express();
