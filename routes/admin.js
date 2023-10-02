@@ -28,10 +28,10 @@ router.post('/add-products', function (req, res, next) {
   let product =req.body;
   product.price = Number(product.price);
   productHelper.addProduct(product, (id) => {
-    
+    console.log(`id=${id}`);
     let img = req.files.image;
     img.mv("./public/product-images/"+id+".jpg",(err)=>{
-
+     console.log(`error img =${err}`);
       if(!err){
         productHelper.getAllProducts().then((products)=>{
     
