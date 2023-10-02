@@ -39,7 +39,7 @@ app.use((err, req, res, next) => {
 
 // Handle GET requests to the root URL
 router.get("/", (req, res) => {
-  res.render('user/view-product', { admin: false});
+  res.render('views/user/view-product', { admin: false});
 });
 
 // Handle POST requests to specific URLs i.e. webhook endpoints
