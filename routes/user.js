@@ -17,24 +17,24 @@ const verifyLogin = (req,res,next)=>{
 router.get('/', async function(req, res, next) {
 
 
-  // let user = req.session.user;
+  let user = req.session.user;
 
-  // let cartCount = null;
-  // if(user){
+  let cartCount = null;
+  if(user){
 
-  //   cartCount = await userHelper.getCartCount(user._id);
-  // }
+    cartCount = await userHelper.getCartCount(user._id);
+  }
  
-  // // console.log(user);
+  // console.log(user);
 
-  // productHelper.getAllProducts().then((products)=>{
+  productHelper.getAllProducts().then((products)=>{
     
    
-  //   res.render('user/view-product', { admin: false, products ,user,cartCount});
-  // });
+    res.render('user/view-product', { admin: false, products ,user,cartCount});
+  });
 
-  console.log("hello");
-  res.render('user/view-product');
+  // console.log("hello");
+  // res.render('user/view-product');
  
 });
 
